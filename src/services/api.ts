@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://gigflow-840u.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -13,7 +13,7 @@ api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -26,11 +26,11 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response &&(error.response.status === 401 || error.response.status === 403)) {
-       // Handle unauthorized access (e.g., redirect to login)
-       // But be careful not to loop if the 401 comes from the login page itself
-       localStorage.removeItem('token');
-       // optional: window.location.href = '/login'; 
+    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      // Handle unauthorized access (e.g., redirect to login)
+      // But be careful not to loop if the 401 comes from the login page itself
+      localStorage.removeItem('token');
+      // optional: window.location.href = '/login'; 
     }
     return Promise.reject(error);
   }
