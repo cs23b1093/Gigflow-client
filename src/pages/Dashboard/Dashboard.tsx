@@ -31,10 +31,16 @@ const Dashboard: React.FC = () => {
     return (
         <div className="py-10">
             <header>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
                     <h1 className="text-3xl font-bold leading-tight text-gray-900 dark:text-white">
                         Dashboard
                     </h1>
+                    <button
+                        onClick={handleLogout}
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    >
+                        Logout
+                    </button>
                 </div>
             </header>
             <main>
